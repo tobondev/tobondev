@@ -2,7 +2,7 @@
 
 I've been running Linux since before I had a reason to.
 What started as teenage curiosity — hardware forums, IRC, breaking things to see what happened —
-became a 15-year foundation that I've spent the last year turning into something documentable.
+became a 12-year foundation that I've spent the last year turning into something documentable.
 
 That's the honest version of my background.
 The rest is below.
@@ -10,8 +10,7 @@ The rest is below.
 ---
 
 ## What I'm Building
-
-The `homelab` repository is a production-grade infrastructure environment I design, operate, and maintain independently.
+The `homelab` repository is a living record of Architectural Decision Records that track what I thought I knew, what I actually found out by breaking things in production, and how I engineered the solution.
 It's modeled on enterprise principles not because I'm simulating a job, but because the discipline of treating it
 like production is the point. Things break. I document why. I fix them. I document that too.
 
@@ -43,15 +42,15 @@ The repository has a lot of files. Here's what's worth reading first depending o
 
 ## Currently Active
 
-- **LGAP Observability Stack** — deploying Loki, Grafana, Alloy, and Prometheus across all infrastructure services, VMs, and bare-metal hosts; establishing as SIEM foundation for Suricata and Wazuh integration
+- **LGAP Observability Stack** — deployed Loki, Grafana, Alloy, and Prometheus across all infrastructure services, VMs, and bare-metal hosts; integrated with Suricata IDS. Pending Wazuh deployment and Integration.
 - **Active Directory / Entra ID** — mixed-OS domain integration (Arch Linux + RHEL + Windows), including hybrid Azure AD enrollment scenarios
-- **Wazuh XDR** — network-wide endpoint detection and response, integrating with OPNsense for unified security visibility
+- **Wazuh XDR** — network-wide endpoint detection and response, integrating with OPNsense and LGAP Stack for unified security visibility
 
 ---
 
 ## How I Think About This Work
 
-Infrastructure is full of things people know the answer to without understanding why it works.
+Infrastructure is full of things people know the answer to without understanding why it works. 
 And sometimes, when you dig into why it works, you realize the answer you had was incomplete.
 
 That tension — between knowing and understanding — is what most of my documentation is actually about.
@@ -63,4 +62,4 @@ If you want to talk about it: [tobon.dev](https://tobon.dev) · [LinkedIn](https
 
 ---
 
-*CompTIA Security+ · Brooklyn, NY · He/They*
+Linux Systems Administrator · *CompTIA Security+ · Brooklyn, NY · He/They*
