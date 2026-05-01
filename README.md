@@ -40,6 +40,18 @@ The repository has a lot of files. Here's what's worth reading first depending o
 
 ---
 
+## How I Write: The Documentation Pipeline
+
+I ran into massive documentation friction early in the lifecycle of this repository. The context switch between executing complex terminal operations, troubleshooting live systems, and retroactively writing down what happened meant I was either moving too slow, or my notes were incomplete. The gap between "knowing what I did" and "proving what I did" was too wide.
+
+To permanently solve this, I built `Journal Helper`. It is a custom Bash-based documentation pipeline that acts as a dynamic `IDE` for my entire infrastructure. When I start an operational task, the tool generates a markdown template, wraps my terminal in a tracked script session, and allows me to tag operational phases dynamically in real-time. When I finish the work and exit the shell, a robust `perl` and `col` parsing pipeline strips all ANSI escape sequences, box-drawing characters, and shell noise. It then directly injects the perfectly formatted, phase-separated transcript into the markdown file.
+
+This is how I maintain operational discipline. It guarantees that every configuration change or incident response I publish is accompanied by exact, real-world terminal output, eliminating manual transcription entirely.
+
+You can find the output of this work in `docs/incidents/` and `docs/operations`.
+
+---
+
 ## Currently Active
 
 - **LGAP Observability Stack** — deployed Loki, Grafana, Alloy, and Prometheus across all infrastructure services, VMs, and bare-metal hosts; integrated with Suricata IDS. Pending Wazuh deployment and Integration.
