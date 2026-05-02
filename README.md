@@ -1,8 +1,8 @@
 # Hi. I'm Marcos.
 
 I've been running Linux since before I had a reason to.
-What started as teenage curiosity — hardware forums, IRC, breaking things to see what happened —
-became a 12-year foundation that I've spent the last year turning into something documentable.
+It started as teenage curiosity: support forums, IRC. Breaking things, then working out how to fix them.
+Today, it's become the foundation of what is a formalized, documented and auditable Project Repository of my Infrastructure Engineering.
 
 That's the honest version of my background.
 The rest is below.
@@ -17,8 +17,8 @@ like production is the point. Things break. I document why. I fix them. I docume
 The architecture spans:
 
 - **Network:** OPNsense edge routing, VLAN segmentation across 20+ endpoints, B.A.T.M.A.N. Advanced L2 mesh decoupled from L3, Suricata IDS/IPS, Cloudflare Zero-Trust tunnels with no inbound port exposure
-- **Storage & Security:** LUKS full-disk encryption across all bare-metal systems, BTRFS with snapshot management via btrbk, automated 3-2-1 backup pipeline to AWS Glacier
-- **Automation:** Ansible-driven provisioning and security hardening across all network nodes, SOPS + age encryption for secrets management in version control
+- **Storage & Security:** LUKS full-disk encryption across all bare-metal systems. Three-tier, stateful backup architecture: local/remote BTRFS snapshots orchestrated natively via `systemd` and `btrbk`, and atomic delta-syncs to AWS Glacier Deep Archive using a custom `rclone` Last Known Good Backup (LKGB) pipeline.
+- **Automation:** Ansible-driven provisioning and security hardening across all network nodes, with SOPS + age encryption enforcing secrets management across all configuration and deployment pipelines.
 - **Observability:** LGAP stack (Loki, Grafana, Alloy, Prometheus) for centralized log aggregation, alerting, and telemetry correlation
 - **Pre-boot:** tinyssh for remote LUKS unlock during disaster recovery, with strictly separated key material from standard SSH access
 
@@ -35,6 +35,7 @@ The repository has a lot of files. Here's what's worth reading first depending o
 | Incident response | [`docs/incidents/`](https://github.com/tobondev/homelab/tree/main/docs/incidents) |
 | Architectural decision-making | [`docs/adrs/`](https://github.com/tobondev/homelab/tree/main/docs/adrs) |
 | Deployment & change management | [`docs/operations/`](https://github.com/tobondev/homelab/tree/main/docs/operations) |
+| Infrastructure Engineering & Automation | [`scripts/admin/backup/`](https://github.com/tobondev/homelab/tree/main/scripts/admin/backup) |
 | Current-state architecture overview | [`docs/architecture/CURRENT-STATE.md`](https://github.com/tobondev/homelab/blob/main/docs/architecture/CURRENT-STATE.md) |
 | Runbooks & operational procedures | [`docs/runbooks/`](https://github.com/tobondev/homelab/tree/main/docs/runbooks) |
 
