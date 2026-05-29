@@ -1,5 +1,5 @@
 # Hi. I'm Marcos.
-
+ 
 I've been running Linux since before I had a reason to.
 It started as teenage curiosity: support forums, IRC. Breaking things, then working out how to fix them.
 Today, it's become the foundation of what is a formalized, documented and auditable Project Repository of my Infrastructure Engineering.
@@ -18,7 +18,8 @@ The architecture spans:
 
 - **Network:** OPNsense edge routing, VLAN segmentation across 20+ endpoints, B.A.T.M.A.N. Advanced L2 mesh decoupled from L3, Suricata IDS/IPS, Cloudflare Zero-Trust tunnels with no inbound port exposure
 - **Storage & Security:** LUKS full-disk encryption across all bare-metal systems. Three-tier, stateful backup architecture: local/remote BTRFS snapshots orchestrated natively via `systemd` and `btrbk`, and atomic delta-syncs to AWS Glacier Deep Archive using a custom `rclone` Last Known Good Backup (LKGB) pipeline.
-- **Automation:** Ansible-driven provisioning and security hardening across all network nodes, with SOPS + age encryption enforcing secrets management across all configuration and deployment pipelines.
+- **Identity and Access Management:** VLAN-Segmented Active Directory Domain, featuring a Server Core Domain Controller, and a testbed for GPO and security hardening, with a 1000-user AD Domain.
+- **Automation:** Ansible-driven provisioning and security hardening across all network nodes, with SOPS + age encryption enforcing secrets management across all configuration and deployment pipelines. PowerShell-based JSON schema for Active Directory Domain population.
 - **Observability:** LGAP stack (Loki, Grafana, Alloy, Prometheus) for centralized log aggregation, alerting, and telemetry correlation
 - **Pre-boot:** tinyssh for remote LUKS unlock during disaster recovery, with strictly separated key material from standard SSH access
 
@@ -53,11 +54,12 @@ You can find the output of this work in `docs/incidents/` and `docs/operations`.
 
 ---
 
-## Currently Active
+## Currently Active Projects
 
-- **LGAP Observability Stack** — deployed Loki, Grafana, Alloy, and Prometheus across all infrastructure services, VMs, and bare-metal hosts; integrated with Suricata IDS. Pending Wazuh deployment and Integration.
-- **Active Directory / Entra ID** — mixed-OS domain integration (Arch Linux + RHEL + Windows), including hybrid Azure AD enrollment scenarios
-- **Wazuh XDR** — network-wide endpoint detection and response, integrating with OPNsense and LGAP Stack for unified security visibility
+- **Hybrid Identity Cloud Bridge** — Synchronizing the on-premise AD domain with a Microsoft 365 Entra ID tenant to validate SSO, delta syncs, and conditional access paths.
+- **Offensive Security & Telemetry Analysis** — Executing deliberate attack paths (Kerberoasting, Bloodhound, password spraying) against intentionally vulnerable AD service accounts to capture and analyze defensive telemetry via Grafana.
+- **Cross-OS Domain Integration** — Enforcing centralized identity across operating systems by joining RHEL endpoints to the Windows domain via `realmd` and `sssd`.
+- **Suricata IDS & Wazuh XDR** — Layered network and endpoint detection, integrating an OPNsense-based IDS with a network-wide Wazuh VM deployment, forwarding logs directly to the LGAP stack.
 
 ---
 
@@ -71,8 +73,8 @@ The ADRs aren't just records of decisions. They're records of what I thought I k
 and what I'd do differently next time.
 
 If that's a useful way to think about systems, the repo is public.
-If you want to talk about it: [tobon.dev](https://tobon.dev) · [LinkedIn](https://tobon.dev/linkedin) · [marcostobon@proton.me](mailto:marcostobon@proton.me)
+If you want to talk about it: [tobon.dev](https://tobon.dev) · [LinkedIn](https://tobon.dev/linkedin) · [marcos@tobon.dev](mailto:marcos@tobon.dev)
 
 ---
 
-Linux Systems Administrator · *CompTIA Security+ · Brooklyn, NY · He/They*
+Linux Systems Administrator & Cybersecurity Professional · *CompTIA Security+ & Google Cybersecurity Certified · Brooklyn, NY · He/They*
